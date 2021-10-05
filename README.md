@@ -1,10 +1,14 @@
-# Getting Started with Create React App
+# Getting Started Teste-pratica---frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was version nodejs > v12.18.4 
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### npm install
+
+To install project dependencies.\
 
 ### `npm start`
 
@@ -13,6 +17,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm run server`
+
+Start JSON Server - Runs the app in the development mode.\
+Resources
+  http://localhost:5001/user
+
+  Home
+  http://localhost:5001
+
 
 ### `npm test`
 

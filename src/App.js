@@ -1,8 +1,8 @@
 import './App.css';
 import {Switch, Route} from "react-router-dom";
 import Home from "./pages/Home";
-import AddTask from "./pages/AddTask.js";
-import EditTask from "./pages/EditTask.js";
+import AddTask from "./pages/AddTask";
+import EditTask from "./pages/EditTask";
 
 function App() {
   return (

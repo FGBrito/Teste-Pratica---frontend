@@ -47,7 +47,7 @@ const EditTask = () => {
   },[task])
 
   const handleChanges = (event) => {
-    if (event.target) {
+    if (event && event.target) {
       if (event.target.type === "checkbox") { 
         setState({
           ...state,

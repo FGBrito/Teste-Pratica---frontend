@@ -8,20 +8,20 @@ const initialState = {
 
 const tasksReducers = (state = initialState, action) => {
   switch( action.type ){
-    case types.GET_TASK:
+    case types.GET_TASKS:
       return {
         ...state,
         tasks: action.payload,
         loading: false
       }
-    case types.DELETE_TASK:
-    case types.ADD_TASK:
-    case types.UPDATE_TASK:
+    case types.DELETE_TASKS:
+    case types.ADD_TASKS:
+    case types.UPDATE_TASKS:
       return {
         ...state,
         loading: false,
       }
-    case types.GET_SINGLE_TASK:
+    case types.GET_SINGLE_TASKS:
       return {
         ...state,
         task: action.payload,

@@ -7,7 +7,7 @@ export const loadTasks = () => {
       .get(`${process.env.REACT_APP_API}`)
       .then((resp)=>{
         dispatch({
-          type: types.GET_TASK,
+          type: types.GET_TASKS,
           payload: resp.data
         });
       })
@@ -21,7 +21,7 @@ export const deleteTask = (id) => {
       .delete(`${process.env.REACT_APP_API}/${id}`)
       .then((resp)=>{
         dispatch({
-          type: types.DELETE_TASK
+          type: types.DELETE_TASKS
         });
         dispatch(loadTasks());
       })
@@ -33,9 +33,9 @@ export const addTask = (task) => {
   return function(dispatch){
     axios
       .post(`${process.env.REACT_APP_API}`, task)
-      .then(()=>{
+      .then((resp)=>{
         dispatch({
-          type: types.ADD_TASK
+          type: types.ADD_TASKS
         });
         dispatch(loadTasks());
       })
@@ -49,7 +49,7 @@ export const getSingleTask = (id) => {
       .get(`${process.env.REACT_APP_API}/${id}`)
       .then((resp)=>{
         dispatch({
-          type: types.GET_SINGLE_TASK,
+          type: types.GET_SINGLE_TASKS,
           payload: resp.data
         });
       })
@@ -61,9 +61,9 @@ export const updateTask = (task, id) => {
   return function(dispatch){
     axios
       .put(`${process.env.REACT_APP_API}/${id}`, task)
-      .then(()=>{
+      .then((resp)=>{
         dispatch({
-          type: types.UPDATE_TASK
+          type: types.UPDATE_TASKS
         });
       })
       .catch((error) => console.log(error));

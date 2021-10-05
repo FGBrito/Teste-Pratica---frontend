@@ -16,7 +16,7 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { AddTask } from '../redux/actions';
+import { addTask } from '../redux/actions';
 
 const AddTask = () => {
   const [state, setState] = useState({
@@ -58,7 +58,7 @@ const AddTask = () => {
     if ( !name || !description || !date ) {
       setError('Por favor preenchar os campos');
     } else {
-      dispatch(addUser(state));
+      dispatch(addTask(state));
       history.push('/');
       setError("")
     }
@@ -87,7 +87,6 @@ const AddTask = () => {
           >
           <TextField
                 required
-                errorText={true}
                 id="outlined-required"
                 label="Título"
                 type="text"
