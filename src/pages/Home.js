@@ -21,7 +21,7 @@ import AddIcon from '@mui/icons-material/Add';
 import swal from 'sweetalert';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, loadUsers } from '../redux/actions';
+import { deleteTask, loadTasks } from '../redux/actions';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -46,9 +46,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Home = () => {
   let dispatch = useDispatch();
   let history = useHistory();
-  const { users } = useSelector(state => state.data);
+  const { tasks } = useSelector(state => state.data);
   useEffect(() => {
-    dispatch(loadUsers());
+    dispatch(loadTasks());
   }, []);
 
   const handleDelete = (id) => {
@@ -64,7 +64,7 @@ const Home = () => {
         swal("Item removido com sucesso!", {
           icon: "success",
         });
-        dispatch(deleteUser(id))
+        dispatch(deleteTask(id))
       }
     });
   }
@@ -76,7 +76,7 @@ const Home = () => {
           <h2 style={{ paddingLeft: '20px'}}>Listagens das Entregas</h2>
         </div>
         <div style={{ margin: "5px" }}>
-          <Fab color="primary" aria-label="add" onClick={()=>history.push("/addUser")}>
+          <Fab color="primary" aria-label="add" onClick={()=>history.push("/addTask")}>
             <AddIcon />
           </Fab>
         </div>
@@ -93,22 +93,22 @@ const Home = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users && users.map((user) => (
-              <StyledTableRow key={user.id}>
+            {tasks && tasks.map((task) => (
+              <StyledTableRow key={task.id}>
                 <StyledTableCell component="th" scope="row" align="center">
-                  {user.name}
+                  {task.name}
                 </StyledTableCell>
-                <StyledTableCell align="center">{user.description}</StyledTableCell>
-                <StyledTableCell align="center">{format(new Date(user.date), 'dd/MM/yyyy')}</StyledTableCell>
+                <StyledTableCell align="center">{task.description}</StyledTableCell>
+                <StyledTableCell align="center">{format(new Date(task.date), 'dd/MM/yyyy')}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {user.status ? 'Sim' : 'Não'}
+                  {task.status ? 'Sim' : 'Não'}
                 </StyledTableCell>
                 <StyledTableCell align="center" style={{ justifyContent: "center", display: "flex" }}> 
                   <Stack direction="row" spacing={2} align="center" >
-                    <Button style={{ marginRight: "5px" }} onClick={()=> handleDelete(user.id)} variant="contained" color="error" startIcon={<DeleteIcon />}>
+                    <Button style={{ marginRight: "5px" }} onClick={()=> handleDelete(task.id)} variant="contained" color="error" startIcon={<DeleteIcon />}>
                       Deletar
                     </Button>
-                    <Button variant="contained" color="secondary"  endIcon={<EditIcon />} onClick={()=> history.push(`/editUser/${user.id}`)}>
+                    <Button variant="contained" color="secondary"  endIcon={<EditIcon />} onClick={()=> history.push(`/editTask/${task.id}`)}>
                       Editar
                     </Button>
                   </Stack>
